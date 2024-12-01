@@ -40,7 +40,7 @@ const config: GatsbyConfig = {
           },
           {
             name: `Homepage`,
-            url: `https://mukeshkr.me/blog`,
+            url: `https://ai.mukeshkr.me`,
           },
         ],
       },

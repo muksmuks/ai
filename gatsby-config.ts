@@ -29,13 +29,17 @@ const config: GatsbyConfig = {
             slug: `/blog`,
           },
           {
-            title: `About`,
-            slug: `/about`,
-          },
-         {
             title: `AI Agents`,
             slug: `/aiagents`,
           },
+         {
+            title: `NLP`,
+            slug: `/nlp`,
+          },
+          {
+            title: `About`,
+            slug: `/about`,
+          }
         ],
         externalLinks: [
           {

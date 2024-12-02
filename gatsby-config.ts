@@ -10,7 +10,7 @@ const config: GatsbyConfig = {
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.mjs
     siteTitle: `Mukesh K's Blog`,
     siteTitleAlt: `Mukesh K's Blog`,
-    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
+    siteHeadline: `Mukesh K's Blog`,
     siteUrl: `https://mukeshkr.me/blog`,
     siteDescription: `Mukesh K's Blog`,
     siteImage: `/banner.jpg`,
@@ -31,6 +31,10 @@ const config: GatsbyConfig = {
           {
             title: `About`,
             slug: `/about`,
+          },
+         {
+            title: `AI Agents`,
+            slug: `/aiagents`,
           },
         ],
         externalLinks: [

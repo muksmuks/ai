@@ -26,7 +26,7 @@ const config: GatsbyConfig = {
         navigation: [
           {
             title: `Start Here`,
-            slug: `https://ai.mukeshkr.me`,
+            slug: `/start-here`,
           },
           {
             title: `AI Agents`,
@@ -51,7 +51,7 @@ const config: GatsbyConfig = {
             url: `https://www.linkedin.com/in/kr-mukesh/`,
           },
          {
-            name: `About`,
+            name: `Mukesh K`,
             url: `/about`,
           }
         ],

@@ -8,11 +8,11 @@ const config: GatsbyConfig = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.mjs
-    siteTitle: `Mukesh K's - The Art of AI`,
-    siteTitleAlt: `Mukesh K's - The Art of AI`,
-    siteHeadline: `Mukesh K's - The Art of AI`,
+    siteTitle: `The Art of AI`,
+    siteTitleAlt: `The Art of AI`,
+    siteHeadline: `The Art of AI`,
     siteUrl: `https://ai.mukeshkr.me/start-here`,
-    siteDescription: `Mukesh K's - The Art of AI`,
+    siteDescription: `The Art of AI`,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
     author: `@lekoarts_de`,
@@ -51,8 +51,8 @@ const config: GatsbyConfig = {
             url: `https://ai.mukeshkr.me`,
           },
          {
-            title: `About`,
-            slug: `/about`,
+            name: `About`,
+            url: `/about`,
           }
         ],
       },
@@ -66,9 +66,9 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Mukesh K's Research`,
-        short_name: `mukesh-research`,
-        description: `Mukesh K's - The Art of AI`,
+        name: `The Art of AI`,
+        short_name: `The Art of AI`,
+        description: `The Art of AI`,
         start_url: `/`,
         background_color: `#fff`,
         // This will impact how browsers show your PWA/website

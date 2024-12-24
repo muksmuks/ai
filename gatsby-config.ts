@@ -26,7 +26,7 @@ const config: GatsbyConfig = {
         navigation: [
           {
             title: `Start Here`,
-            slug: `/start-here`,
+            slug: `/blog`,
           },
           {
             title: `AI Agents`,

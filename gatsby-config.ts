@@ -8,11 +8,11 @@ const config: GatsbyConfig = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/main/themes/gatsby-theme-minimal-blog/gatsby-config.mjs
-    siteTitle: `Mukesh K's Blog`,
-    siteTitleAlt: `Mukesh K's Blog`,
-    siteHeadline: `Mukesh K's Blog`,
-    siteUrl: `https://mukeshkr.me/blog`,
-    siteDescription: `Mukesh K's Blog`,
+    siteTitle: `Mukesh K's - The Art of AI`,
+    siteTitleAlt: `Mukesh K's - The Art of AI`,
+    siteHeadline: `Mukesh K's - The Art of AI`,
+    siteUrl: `https://ai.mukeshkr.me/start-here`,
+    siteDescription: `Mukesh K's - The Art of AI`,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
     author: `@lekoarts_de`,
@@ -25,21 +25,21 @@ const config: GatsbyConfig = {
       options: {
         navigation: [
           {
-            title: `Blog`,
-            slug: `/blog`,
+            title: `Start Here`,
+            slug: `/start-here`,
           },
           {
             title: `AI Agents`,
             slug: `/aiagents`,
           },
          {
+            title: `AGI`,
+            slug: `/agi`,
+          }
+         {
             title: `NLP`,
             slug: `/nlp`,
           },
-          {
-            title: `About`,
-            slug: `/about`,
-          }
         ],
         externalLinks: [
           {
@@ -50,6 +50,10 @@ const config: GatsbyConfig = {
             name: `Homepage`,
             url: `https://ai.mukeshkr.me`,
           },
+         {
+            title: `About`,
+            slug: `/about`,
+          }
         ],
       },
     },
@@ -62,9 +66,9 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Mukesh K's Blog`,
-        short_name: `mukesh-blog`,
-        description: `Mukesh K's Blog`,
+        name: `Mukesh K's Research`,
+        short_name: `mukesh-research`,
+        description: `Mukesh K's - The Art of AI`,
         start_url: `/`,
         background_color: `#fff`,
         // This will impact how browsers show your PWA/website

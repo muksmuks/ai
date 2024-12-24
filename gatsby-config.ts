@@ -117,7 +117,6 @@ const config: GatsbyConfig = {
 
                 return {
                   title: post.title,
-                  date: post.date,
                   excerpt: post.excerpt,
                   url,
                   guid: url,

@@ -35,7 +35,7 @@ const config: GatsbyConfig = {
          {
             title: `AGI`,
             slug: `/agi`,
-          }
+         },
          {
             title: `NLP`,
             slug: `/nlp`,

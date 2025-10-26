@@ -11,7 +11,7 @@ tags:
 Universe is a ‘hard disk’ full of stimuli. Human brain, transforms these stimuli into data, and data into information, through the cognitive functions. Through
 the information we receive, we start the hunt of acquiring more and more knowledge.
 
-Ackoff (1989) in his article From Data to Wisdom proposed a model (wisdom hierarchy) including the following levels:
+Ackoff (1989) in his article **[1] From Data to Wisdom**  proposed a model (wisdom hierarchy) including the following levels:
 
 **Data --> Information --> Knowledge --> Insight --> Wisdom**
 
@@ -38,109 +38,51 @@ LLM functions as the agent’s brain, complemented by several key components:
 
 These two technologies together provide an means to add *agency* (autonomous) to the journey from data to insight, which almost seems magical.
 
+With these AI transformative tools, it seems everything is figured out. Right? **Wrong**
+
+While the pieces are there, scaffolding is missing. This article will present
+- participants in the journey
+- How it was being done in the user driven approach
+
+**The aim is to bring forward unique characteristic of such implementations and the need for those. The understanding provides
+feature mapping when we introduce agents and hence argue about shortcomings and approach around those.**
 
 
+### The Participants
+
+![](./assets/participants.png)
+
+### DataSources
+Enterprises has data in different form
+- Transactional data (Accessible via API)
+- Analytical data (Structured, Semi-structured or Unstructured)
+
+### Process Knowledge
+Which data are needed for insight and how to bring the data. This can be referred to as orchestration
+These knowledge is present in product documentations, expert's process knowledge
+
+### Domain Knowledge
+How different concepts relate to each other. Experts inject this meaning to data through ontology
+
+> In knowledge representation and AI, an ontology is a formal, structured description of knowledge — it defines the concepts (entities), relationships, and rules that describe a particular domain.
+Put simply, it’s a schema for meaning — a way to tell machines what things exist, how they relate, and what constraints apply.
+
+### Goals
+When we need to analyse data, certain amount of probing is required. Probing needs goals in expert's mind based on the domain of interest. Different domains
+would have different goals in mind. For example CSM would be interested in customer churn and indicators capturing those.
+
+In traditional Data Science, this is referred to as dimensions.
+
+### Explaining a pattern
+Once an insight has been presented, there is often a need to understand the why. For eg if in product quality, if the number of
+tickets have dipped suddenly, the need to understand the why can indicate a holiday month like Christmas.
+
+Traditional ML techniques like anomaly detection has been used to understand the underlying cause
 
 
+### How it was done traditionally
 
-
-
-
-
-
-
-Performance of reasoning models consistently improves with increasing the computation of reinforcement learning and
-inference. This denotes 2 paradigm shifts
-- From (self-)supervised learning toward reinforcement learning
-- From scaling solely training computation to scaling both training and inference computation.
-
-### Background
-Let us introduce some background of reinforcement learning and its connection to LLM in this section. Unlike other
-learning paradigms, reinforcement learning learns through interaction with the environment, rather
-than learning from a static training dataset. In reinforcement learning, an agent learns by receiving
-rewards from the environment as it explores. The below figure illustrates the interaction between agent and
-environment in reinforcement learning for LLM.
-
-
-![](./assets/llm_as_policy.png)
-
-<h4>The visualization of the interaction between agent and environment in reinforcement
-learning for LLMs. Left: traditional reinforcement learning. Right: reinforcement learning for LLMs.
-The figure only visualizes the step-level action for simplicity. In fact, the action of LLM can be either
-token-, step-, or solution-level. </h4>
-
-#### Agent
-
-Agent is the entity that interacts with environment, which makes decision according to its
-policy. Formally, a policy π is a mapping from states to actions. It is often represented as a probability
-distribution (π(a|s)) over actions given a state s, where the agent selects actions based on these
-probabilities.
-
-
-In the context of LLMs, an agent refers to LLM itself, its policy specify the probability distribution
-of either token-, step-, or solution-level actions based on the current state. The state s<sub>t</sub> consists of the
-input provided to the model at time t, including both user inputs and the model’s earlier outputs. The
-action taken by the model can vary depending on the problem setting; it involves generating a single
-token, completing a step, or providing a solution.
-
-#### Environment
-Environment refers to the system or world outside the agent. It responds to agent’s
-actions and provide feedback in terms of next state s<sub>t+1</sub> and rewards r(s<sub>t</sub>, a<sub>t</sub>)
-
-Environmental feedback can be categorized as either deterministic or stochastic. Stochastic feedback
-is characterized by a transition distribution p(s<sub>t+1</sub>, r<sub>t+1</sub>|s<sub>t</sub>, a<sub>t</sub>), as seen in systems like dialogue
-models, where user responses are inherently unpredictable. On the other hand, deterministic feedback
-involves no randomness, yielding a fixed next state s<sub>t+1</sub> and reward r(s<sub>t</sub>, a<sub>t</sub>). For instance, when a
-LLM solves a mathematical problem, the transition is deterministic, where the current state s<sub>t</sub> and
-action at are combined to produce the next state s<sub>t+1</sub>.
-
-
-### LLM as a policy
-
-#### Policy Initialization
-Training an LLM from scratch using reinforcement learning is exceptionally
-challenging due to its vast action space. Fortunately, we can leverage extensive internet data to pre-
-train a language model, establishing a potent initial policy model capable of generating fluent language
-outputs. Moreover, prompt engineering and supervised fine-tuning help models acquire human-like
-reasoning behaviors, enabling them to think systematically and validate their own results. These
-approaches enable models to thoroughly explore their solution spaces, leading to more comprehensive
-problem-solving capabilities.
-
-
-#### Reward Design
-Both search and learning require guidance from reward signals to improve the
-policy. There are different levels of action granularity, each corresponding to varying levels of reward
-signals granularity, which can be explored further. Additionally, these signals are often sparse or even
-nonexistent in many environments. To transform sparse outcome reward to dense process reward,
-there are some reward shaping methods [Ng et al., 1999](https://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/readings/NgHaradaRussell-shaping-ICML1999.pdf). For the environment where the reward
-signal is unavailable, like the task of story writing, we can learn a reward model from preference data
-[Bai et al., 2022a](https://doi.org/10.48550/arXiv.2204.05862) or expert data [Ng & Russell, 2000](https://ai.stanford.edu/~ang/papers/icml00-irl.pdf).
-The construction of reward model can further evolve into building a world model [Dawid & LeCun, 2023](https://doi.org/10.48550/arXiv.2306.02572).
-
-
-#### Search
-Search plays a crucial role during both the training and testing phases. The training
-time search refers to generating training data from search process. The advantage of using search
-to generate training data, as opposed to simple sampling, is that search yields better actions or
-solutions—i.e., higher-quality training data—thereby enhancing learning effectiveness. During
-inference, search continues to play a vital role in improving the model’s sub-optimal policies. For
-instance, AlphaGo [Wan et al., 2024](https://openreview.net/forum?id=C4OpREezgj) employs Monte Carlo Tree Search (MCTS) during testing
-to enhance its performance. However, scaling test-time search may lead to inverse scaling due to
-distribution shift: the policy, reward, and value models are trained on one distribution but evaluated
-on a different one [Gao et al., 2023](https://proceedings.mlr.press/v202/gao23h.html).
-
-
-#### Learning
-Learning from human-expert data requires costly data annotation. In contrast, reinforce-
-ment learning learns through interactions with the environment, eliminating the need for expensive
-data annotation and offering the potential for superhuman performance. In this roadmap, reinforcement learning utilizes
-data generated by search for learning via policy gradient or behavior cloning.
-Policy gradient methods have high data utilization, as they leverage both positive and negative
-solutions, whereas behavior cloning is advantageous in terms of simplicity and memory efficiency. A
-prominent example of the iterative interaction between search and learning is AlphaGo Zero [(Silver
-et al., 2017](https://doi.org/10.1038/nature24270), which combines Monte Carlo Tree Search (MCTS) (Metropolis & Ulam, 1949) as the
-search algorithm with behavior cloning as the learning method, ultimately achieving superhuman
-performance in the game of Go.
+![](./assets/traditionally.png)
 
 
 ### References

@@ -52,28 +52,28 @@ feature mapping when we introduce agents and hence argue about shortcomings and 
 
 ![](./assets/participants.png)
 
-### DataSources
+#### DataSources
 Enterprises has data in different form
 - Transactional data (Accessible via API)
 - Analytical data (Structured, Semi-structured or Unstructured)
 
-### Process Knowledge
-Which data are needed for insight and how to bring the data. This can be referred to as orchestration
-These knowledge is present in product documentations, expert's process knowledge
+#### Process Knowledge
+Which data are needed for insight and how to bring the data. This can be referred to as **orchestration**.
+These knowledge is present in product documentations, expert's process knowledge.
 
-### Domain Knowledge
+#### Domain Knowledge
 How different concepts relate to each other. Experts inject this meaning to data through ontology
 
 > In knowledge representation and AI, an ontology is a formal, structured description of knowledge — it defines the concepts (entities), relationships, and rules that describe a particular domain.
 Put simply, it’s a schema for meaning — a way to tell machines what things exist, how they relate, and what constraints apply.
 
-### Goals
+#### Goals
 When we need to analyse data, certain amount of probing is required. Probing needs goals in expert's mind based on the domain of interest. Different domains
 would have different goals in mind. For example CSM would be interested in customer churn and indicators capturing those.
 
 In traditional Data Science, this is referred to as dimensions.
 
-### Explaining a pattern
+#### Explaining a pattern
 Once an insight has been presented, there is often a need to understand the why. For eg if in product quality, if the number of
 tickets have dipped suddenly, the need to understand the why can indicate a holiday month like Christmas.
 
@@ -83,6 +83,18 @@ Traditional ML techniques like anomaly detection has been used to understand the
 ### How it was done traditionally
 
 ![](./assets/traditionally.png)
+
+> Analyst can be Data Scientist or Business Analyst. Data Scientists took pro-code approach why business analyst would rely
+> on no-code or low-code tools like Tableau etc
+
+The journey from data to insight would begin by an analyst
+- Bringing in data from different data sources based on process knowledge
+- Merging data based on domain knowledge
+- Arriving on goals based on domain knowledge
+- Presenting the dimensions in form of charts or texts
+- Explaining anomaly using ML methods like Anomaly detection etc
+
+
 
 
 ### References

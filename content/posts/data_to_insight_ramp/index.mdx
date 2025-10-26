@@ -11,7 +11,7 @@ tags:
 Universe is a ‘hard disk’ full of stimuli. Human brain, transforms these stimuli into data, and data into information, through the cognitive functions. Through
 the information we receive, we start the hunt of acquiring more and more knowledge.
 
-Ackoff (1989) in his article **[1] From Data to Wisdom**  proposed a model (wisdom hierarchy) including the following levels:
+Ackoff (1989) in his article [1] **From Data to Wisdom**  proposed a model (wisdom hierarchy) including the following levels:
 
 **Data --> Information --> Knowledge --> Insight --> Wisdom**
 
@@ -21,7 +21,7 @@ His model could be considered as pyramid as each level includes the previous lev
 
 
 Analogously, through software systems, we have created means to capture data, the persuit remains to gain knowledge, insight and wisdom
-in an efficient way and cost-effective way. Efficiency implies
+in an efficient and cost-effective way. Efficiency implies
 - Time taken to arrive at an actionable insight
 - Reliability of the insight
 
@@ -38,14 +38,24 @@ LLM functions as the agent’s brain, complemented by several key components:
 
 These two technologies together provide an means to add *agency* (autonomous) to the journey from data to insight, which almost seems magical.
 
-With these AI transformative tools, it seems everything is figured out. Right? **Wrong**
+With these AI transformative tools, it seems everything is figured out. Right? **Wrong**. While the pieces are there,
+- Scaffolding is missing.
+- Data is distributed across heterogeneous data sources and have different formats.
+- Absence of 360 degree view on relevant data
+- Semantic Similarity based Information Retrieval(IR) has TOP_K curse.
+- LLMs are not good with numbers but are good with non-numeric generation tasks like abstractive summarization, creative writing.
+- Grounding LLM to prevent hallucinations
+- Stochasticity curse
 
-While the pieces are there, scaffolding is missing. This article will present
-- participants in the journey
-- How it was being done in the user driven approach
+All above results into reliability concerns wrt to the quality of IR and response generation.
 
-**The aim is to bring forward unique characteristic of such implementations and the need for those. The understanding provides
-feature mapping when we introduce agents and hence argue about shortcomings and approach around those.**
+### Introduction
+In the current article, we will the present the approaches followed in pre-LLM world in the journey from *Data to Insight*
+We will discuss
+- Participants in the journey from *Data to insight*
+- How it was being done in the pre-LLM world
+
+The understanding will provide feature mapping when we introduce agents and hence argue about shortcomings and approach around those.
 
 
 ### The Participants
@@ -67,6 +77,13 @@ How different concepts relate to each other. Experts inject this meaning to data
 > In knowledge representation and AI, an ontology is a formal, structured description of knowledge — it defines the concepts (entities), relationships, and rules that describe a particular domain.
 Put simply, it’s a schema for meaning — a way to tell machines what things exist, how they relate, and what constraints apply.
 
+
+> **Deductive and inductive reasoning**
+> *Deductive reasoning* is a basic form of reasoning. It begins with a general statement or hypothesis and examines the possibilities to reach a specific, logical conclusion. For example, consider the reasoning: “All men are mortal. Alessandro is a man. Therefore, Alessandro is mortal.” With deductive reasoning, the hypothesis must be correct. It is assumed that the premises, “All men are mortal” and “Alessandro is a man,” are true. Therefore, the conclusion is logical and true.
+> *Inductive reasoning* makes broad generalizations from specific observations. It starts with data that includes samples of reality and then draws conclusions. For example, “The coin I pulled from the bag is a penny. The second and the third coins from the bag are pennies. Therefore, all the coins in the bag are pennies.” Note that even if all the premises are true in the original statement, inductive reasoning can lead to false conclusions. Here’s an example: “Harold is a grandfather. Harold is bald. Therefore, all grandfathers are bald.” In this case, the conclusion does not follow logically from the statements.
+
+Ontology based knowledge representation allows for Deductive Reasoning. Model based prediction/reasoning allows for Inductive reasoning
+
 #### Goals
 When we need to analyse data, certain amount of probing is required. Probing needs goals in expert's mind based on the domain of interest. Different domains
 would have different goals in mind. For example CSM would be interested in customer churn and indicators capturing those.
@@ -84,15 +101,18 @@ Traditional ML techniques like anomaly detection has been used to understand the
 
 ![](./assets/traditionally.png)
 
-> Analyst can be Data Scientist or Business Analyst. Data Scientists took pro-code approach why business analyst would rely
-> on no-code or low-code tools like Tableau etc
 
-The journey from data to insight would begin by an analyst
+
+The journey from data to insight would begin with an analyst
 - Bringing in data from different data sources based on process knowledge
 - Merging data based on domain knowledge
 - Arriving on goals based on domain knowledge
 - Presenting the dimensions in form of charts or texts
 - Explaining anomaly using ML methods like Anomaly detection etc
+
+> Analyst can be Data Scientist or Business Analyst.
+> Data Scientists took pro-code approach while business analyst would rely
+> on no-code or low-code tools like Tableau etc
 
 
 

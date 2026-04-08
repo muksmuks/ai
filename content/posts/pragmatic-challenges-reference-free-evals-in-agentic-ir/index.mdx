@@ -1,0 +1,42 @@
+---
+title: Agent Benchmarks
+date: 2025-12-01
+tags:
+  - AI Agents
+  - Benchmarks
+  - Evaluations
+---
+
+# Paradigmatic Challenges in the reference-Free Evaluation of Agentic Information Retrieval Systems
+
+The traditional architecture of information retrieval, which has remained fundamentally stable since the 1970s,
+defines the process as the acquisition of relevant information items from a pre-defined, static corpus to satisfy
+discrete user needs.[1, 2] In this legacy framework, evaluation was anchored to a "gold standard" or ground truth,
+typically represented by a set of queries and their associated relevant documents, allowing for the calculation of
+definitive metrics such as Precision@k and Recall@k.[3, 4] However, the emergence of agentic information retrieval
+(Agentic IR) has catalyzed an ontological shift, redefining "information" from static items to dynamic, context-dependent
+information states.[1, 2, 5] This evolution, driven by large language models (LLMs) that interleave multi-step
+reasoning with on-demand retrieval, introduces a profound evaluation crisis: the path to fulfilling a user's intent is
+no longer a single-turn match but a non-deterministic trajectory through a complex state-space.[6, 7] In this
+environment, ground truth is frequently unavailable, as the "ideal" reasoning path is often unknown, highly variable, or
+too costly to annotate.[8, 9, 10]
+
+## The Ontological Shift from Information Items to Information States
+At the core of the evaluation challenge is the transition from a filtering objective to a navigation objective.
+Traditional IR helps a user acquire a preferred item from a corpus, whereas Agentic IR helps a user achieve a target
+information state within a dynamic environment.[1, 5] An information state refers to the particular information context
+the user occupies, encompassing not only the retrieved data but also real-time preferences, contextual factors, and
+the history of the agent’s decision-making process.[1, 2, 5]
+This paradigm can be formalized using graph searching theory. A directed graph is defined as a set N of nodes and a
+set A of arcs, where nodes represent information states and arcs represent actions taken by the agent.[11]
+The Agentic IR process is thus a path `<n0, n1,....,nk>` from a start node to a goal node.[11]
+
+The complexity of evaluating this process without ground truth arises from the forward branching
+factor—the number of outgoing arcs from a node—which represents the diverse choices an agent can make at any given
+step.[11] Unlike traditional systems, where there is one "correct" result, Agentic IR may have multiple distinct
+trajectories that lead to the same final state, rendering simple trajectory comparison to an
+offline dataset inherently biased and limited.[5]
+
+
+
+

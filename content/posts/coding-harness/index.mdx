@@ -1,33 +1,40 @@
 ---
-title: What is AGI
-date: 2024-12-26
+title: Coding Harness — Components of a Coding Agent
+date: 2026-03-12
 tags:
-  - Artificial General Intelligence
-  - AGI
-  - Definition
+  - AI Agents
+  - Coding Harness
+  - Agent Harness
+  - Agentic
 ---
 
-To make deliberate progress towards more intelligent and human-like systems, we need to be following an appropriate feedback signal. We need to define and evaluate intelligence.
+# Coding Harness — Components of a Coding Agent
 
-The consensus definition of AGI, "a system that can automate the majority of economically valuable work," while a useful goal, is an incorrect measure of intelligence.
+## How coding agents make LLMs work better in practice with tools use, memory, and repo context
+“AI agents will transform the way we interact with technology, making it more natural and intuitive. They will enable
+us to have more meaningful and productive interactions with computers.” — Fei-Fei Li, Professor of
+Computer Science at Stanford University
 
-Measuring task-specific skill is not a good proxy for intelligence.
+Agents have become an pervasive topic because much of the recent progress in practical LLM systems is
+not just about better models, but about how we use them. In many real-world applications, the surrounding system,
+such as tool use, context management, and memory, plays as much of a role as the model itself.
+This also helps explain why systems like Claude Code or Codex can feel significantly more capable
+than the same models used in a plain chat interface.
 
-Skill is heavily influenced by prior knowledge and experience. Unlimited priors or unlimited training data allows developers to "buy" levels of skill for a system. This masks a system's own generalization power.
+In this article, we will discuss, six of the main building blocks of a coding agent.
 
-Intelligence lies in broad or general-purpose abilities; it is marked by skill-acquisition and generalization, rather than skill itself.
+## Coding Agents — Claude Code, Codex CLI, and others
+You are probably used or familiar with Claude Code or the Codex CLI, but just to set the stage — they are
+agentic coding-productivity tools that wrap an LLM or their evolved cousins — in an application layer, a so-called
+agentic harness, to be more convenient and better-performing for coding tasks.
 
-Here's a better definition for AGI:
+Coding agents are engineered for software work where usage pleasantness is not defined only by the model
+choice but the surrounding system, including repo context, tool design, prompt-cache stability, memory,
+and long-session continuity.
 
-> AGI is a system that can efficiently acquire new skills outside of its training data.
+![](./different_coding_assistants.png)
 
-More formally:
-
-> The intelligence of a system is a measure of its skill-acquisition efficiency over a scope of tasks, with respect to [priors](https://arcprize.org/arc#priors), experience, and generalization difficulty.
-François Chollet, "On the Measure of Intelligence"
-
-This means that a system is able to adapt to new problems it has not seen before and that its creators (developers) did not anticipate.
-
-ARC-AGI is the only AI benchmark that measures our progress towards general intelligence.
-
-[Hear François explain intelligence](https://www.youtube.com/watch?v=PUAdj3w3wO4&t=1591s). (Lex Friedman interview on YouTube)
+That distinction matters because when we talk about the coding capabilities of LLMs, people often collapse
+the model, the reasoning behavior, and the agent product into one thing. But before getting into the
+coding agent specifics, it’s important to add more context on the difference between the broader concepts,
+the LLMs, reasoning models, and agents.

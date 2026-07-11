@@ -76,15 +76,9 @@ export type HeroStat = {
 }
 
 export const heroStats: HeroStat[] = [
-  { value: `TODO: 3`, label: `Patents` },
-  { value: `TODO: 5`, label: `Awards` },
-  { value: `TODO: 10+`, label: `AI Products shipped` },
+  { value: `10+`, label: `patents in Data and AI` },
+  { value: `10+`, label: `AI and Data Science products shipped` },
 ]
-
-export const heroStatus = {
-  label: `TODO: Active`,
-  detail: `TODO: PhD Research`,
-}
 
 export type CredentialStat = {
   label: string
@@ -104,7 +98,7 @@ export type CredentialItem = {
 }
 
 export const credentials: CredentialItem[] = [
-  { title: `TODO: Credential / Award / Certification`, issuer: `TODO: Issuer`, year: `TODO: Year` },
+  { title: `Reinforcement Learning — Technical Reviewer`, issuer: `Manning Publications` },
 ]
 
 export const contact = {

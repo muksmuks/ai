@@ -35,7 +35,7 @@ const BlogCards = ({ posts }: BlogCardsProps) => {
       <Title text="Blog">
         <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
       </Title>
-      <Grid gap={3} columns={[1, 2, 3]}>
+      <Grid gap={3} columns={[1, 2, 2]}>
         {posts.map((post) => (
           <Card
             key={post.slug}

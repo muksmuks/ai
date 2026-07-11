@@ -5,7 +5,7 @@ import Title from "@lekoarts/gatsby-theme-minimal-blog/src/components/title"
 import { techStack } from "../../data/homepage"
 
 const TechStack = () => (
-  <section sx={{ mb: [5, 6, 7] }}>
+  <section sx={{ mb: [3, 4] }}>
     <Title text="Tech Stack" />
     {techStack.map((group) => (
       <Box key={group.category} sx={{ mb: 3 }}>

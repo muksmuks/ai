@@ -1,24 +1,29 @@
 /** @jsx jsx */
 import * as React from "react"
-import { jsx, Box } from "theme-ui"
+import { jsx, Box, Card } from "theme-ui"
 import Title from "@lekoarts/gatsby-theme-minimal-blog/src/components/title"
-import { education } from "../../data/homepage"
+import Carousel from "./carousel"
+import { education, EducationItem } from "../../data/homepage"
+
+const EducationCard = (item: EducationItem) => (
+  <Card sx={{ p: 2, borderRadius: `8px`, border: `1px solid`, borderColor: `divide`, height: `100%` }}>
+    <Box sx={{ display: `flex`, justifyContent: `space-between`, flexWrap: `wrap`, alignItems: `baseline` }}>
+      <Box sx={{ fontSize: `12px`, fontWeight: `bold`, color: `heading` }}>{item.institution}</Box>
+      <Box sx={{ fontSize: `10px`, color: `secondary` }}>{item.period}</Box>
+    </Box>
+    <Box sx={{ fontSize: `11px`, color: `secondary`, mt: 1 }}>{item.degree}</Box>
+  </Card>
+)
 
 const Education = () => (
-  <section sx={{ mb: [5, 6, 7] }}>
+  <section sx={{ mb: [3, 4] }}>
     <Title text="Education" />
-    {education.map((item, i) => (
-      <Box
-        key={`${item.institution}-${i}`}
-        sx={{ display: `flex`, justifyContent: `space-between`, flexWrap: `wrap`, alignItems: `baseline`, mb: 3 }}
-      >
-        <Box>
-          <Box sx={{ fontSize: [1, 2], fontWeight: `bold`, color: `heading` }}>{item.institution}</Box>
-          <Box sx={{ fontSize: [1, 1, 2], color: `secondary` }}>{item.degree}</Box>
-        </Box>
-        <Box sx={{ fontSize: 0, color: `secondary` }}>{item.period}</Box>
-      </Box>
-    ))}
+    <Carousel
+      items={education}
+      getKey={(item, i) => `${item.institution}-${i}`}
+      basis={[`75%`, `45%`, `32%`]}
+      renderItem={(item) => <EducationCard {...item} />}
+    />
   </section>
 )
 

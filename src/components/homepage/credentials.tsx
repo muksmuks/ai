@@ -5,7 +5,7 @@ import Title from "@lekoarts/gatsby-theme-minimal-blog/src/components/title"
 import { credentialStats, credentials } from "../../data/homepage"
 
 const Credentials = () => (
-  <section sx={{ mb: [5, 6, 7] }}>
+  <section sx={{ mb: [3, 4] }}>
     <Title text="Credentials" />
     <Grid gap={4} columns={[1, credentialStats.length]} sx={{ mb: 4 }}>
       {credentialStats.map((stat) => (

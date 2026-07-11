@@ -9,7 +9,7 @@ const Contact = () => {
   const { externalLinks } = useMinimalBlogConfig()
 
   return (
-    <section sx={{ mb: [5, 6, 7] }}>
+    <section sx={{ mb: [3, 4] }}>
       <Title text="Contact" />
       <p sx={{ fontSize: [1, 2], color: `secondary`, mb: 3 }}>
         Reach out at <TLink href={`mailto:${contact.email}`}>{contact.email}</TLink>

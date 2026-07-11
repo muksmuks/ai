@@ -40,9 +40,13 @@ const ProjectCard = (project: ProjectItem) => (
   </Card>
 )
 
-const Projects = () => (
+type ProjectsProps = {
+  hideTitle?: boolean
+}
+
+const Projects = ({ hideTitle = false }: ProjectsProps) => (
   <section sx={{ mb: [3, 4] }}>
-    <Title text="Projects" />
+    {!hideTitle && <Title text="Projects" />}
     <Carousel
       items={projects}
       getKey={(item, i) => `${item.name}-${i}`}

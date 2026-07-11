@@ -1,0 +1,27 @@
+---
+title: "Agentic Harness Design: Pets vs. Cattle"
+slug: "agentic-harness-pets-vs-cattle"
+date: 2026-05-11
+sourceUrl: "https://www.linkedin.com/posts/kr-mukesh_agenticabrharness-writtenbyhuman-activity-7450067341805010944-hTTI"
+image: "https://media.licdn.com/dms/image/v2/D5622AQEQqtmKIQT5Qg/feedshare-shrink_800/B56Z2P0xRuKMAc-/0/1776234468958?e=2147483647&v=beta&t=38MbymX0M7QOKhLHVp89hcY_EQE5LUZtHvzGCw0ajPg"
+tldr:
+  - "Modern agentic harnesses can be designed like a multi-headed, multi-armed system — many specialized parts working together as one."
+  - "Borrows the 'pets vs. cattle' principle from DevOps and Anthropic's Managed Agent pattern: a pet is irreplaceable, a cow in a herd is swappable."
+  - "Favors modular, stateless agents and tools that can be spun up, swapped out, or scaled without breaking the whole system — the same philosophy behind serverless computing's success."
+tags:
+  - "Agentic Harness"
+  - "Multi-Agent Systems"
+  - "Agent Design"
+---
+
+## What is it
+
+"Pets vs. cattle" is a design principle for agentic harnesses — the systems that coordinate agents and tools in a multi-agent setup. A "pet" is a component you hand-tend and can't lose: stateful, unique, hard to replace. "Cattle" are interchangeable: any individual instance can be swapped out or scaled without the herd noticing. Applied to agent design, this means favoring modular, stateless agents and tools over brittle, monolithic, stateful ones — echoing Anthropic's Managed Agent pattern.
+
+## Why it matters
+
+Multi-agent systems fail in exactly the places a single agent becomes a critical, irreplaceable dependency. If one agent or tool holds hidden state that the rest of the system implicitly relies on, it becomes a single point of failure — hard to debug, hard to scale, and risky to change. Treating agents and tools as stateless, swappable units instead means individual components can be spun up, replaced, or scaled independently without breaking the whole system, which is exactly the resilience and scalability serverless computing already proved out for backend infrastructure.
+
+## How it was achieved
+
+The approach borrows directly from DevOps and serverless design philosophy: keep components stateless, push state out to shared, externally-managed stores, and design each agent/tool boundary so that any instance is disposable and replaceable. Anthropic's Managed Agent pattern applies this at the agent level — agents are orchestrated as swappable units rather than long-lived, uniquely-configured processes, which is what lets a harness scale or reconfigure itself without brittle points of failure.

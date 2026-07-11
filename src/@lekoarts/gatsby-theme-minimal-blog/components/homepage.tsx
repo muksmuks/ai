@@ -6,6 +6,7 @@ import useSiteMetadata from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-s
 import { visuallyHidden } from "@lekoarts/gatsby-theme-minimal-blog/src/styles/utils"
 import Seo from "@lekoarts/gatsby-theme-minimal-blog/src/components/seo"
 import HeroSection from "../../../components/homepage/hero-section"
+import StateOfAiSection from "../../../components/homepage/state-of-ai-section"
 import BlogCards, { BlogCardPost } from "../../../components/homepage/blog-cards"
 import Contact from "../../../components/homepage/contact"
 
@@ -22,6 +23,8 @@ const Homepage = ({ posts }: MBHomepageProps) => {
       <HeroSection mb={[4, 5]} mt={[`-3rem`, `-6rem`]} />
       <Box sx={{ borderTopStyle: `solid`, borderTopWidth: `1px`, borderTopColor: `divide`, mb: 1 }} />
       <BlogCards posts={posts} />
+      <Box sx={{ borderTopStyle: `solid`, borderTopWidth: `1px`, borderTopColor: `divide`, mb: 1 }} />
+      <StateOfAiSection />
       <Contact />
     </Layout>
   )

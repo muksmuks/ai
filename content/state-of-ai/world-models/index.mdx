@@ -1,0 +1,31 @@
+---
+title: Training Intelligent Systems with a Model of the World
+slug: "world-models"
+date: 2026-06-20
+sourceUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7472495114372890625/"
+image: "https://media.licdn.com/dms/image/v2/D4D22AQGQm9UhwQAdYA/feedshare-shrink_800/B4DZ7OitOLJwAc-/0/1781581665453?e=2147483647&v=beta&t=L_wtTkfuHvSuQfUa-E9eHj1H1x30Xmrk5QBamc6r7hw"
+tldr:
+  - "Intelligent systems need a 'model of the world' to perceive, reason, and act — intelligence goes beyond text and speech."
+  - "Three components make this up: Renderers (visual plausibility), Simulators (abstract physics/causality), and Planners (rehearsing actions before acting for real)."
+  - "The analogy: like practicing a skill in a dream before doing it while awake."
+tags:
+  - "World Models"
+  - "Reinforcement Learning"
+  - "Simulation"
+---
+
+## What is it
+
+A world model is an internal representation an AI system builds of its environment, letting it simulate and predict how that environment behaves before acting in it. Three components typically make one up:
+
+- **Renderers** generate visual outputs that look coherent — systems like DIAMOND and Genie produce interactive, believable futures, prioritizing visual plausibility over strict physical accuracy.
+- **Simulators** are the underlying logic — they model the abstract rules governing physics and causality. Latent world models like JEPA work entirely in this abstract space, without rendering pixels at all.
+- **Planners** are the active agent — they rehearse actions within the simulation. Systems like Dreamer train entirely within this inner world to prepare an agent for real-world deployment.
+
+## Why it matters
+
+Real intelligence requires more than language — an agent needs to perceive its environment, reason about cause and effect, and rehearse actions safely before acting for real. World models let agents learn from simulated experience instead of costly or risky real-world trial and error, which makes them foundational to embodied and agentic AI systems that need to act in physical or otherwise complex environments.
+
+## How it was achieved
+
+Researchers built dedicated components for each function rather than one monolithic system: Renderers like DIAMOND and Genie focus on producing visually believable interactive futures. Simulators like JEPA operate in a compressed, abstract latent space to model causal rules without pixel-level rendering, making the physics-following far more efficient. Planners like Dreamer then train agents entirely inside these simulated worlds, letting them rehearse before deployment. Separating "how it looks," "how it behaves," and "what to do" into distinct components lets each be optimized independently and then composed into a full world-model-driven training loop.

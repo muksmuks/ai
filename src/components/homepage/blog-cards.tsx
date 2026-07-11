@@ -5,13 +5,7 @@ import { Link } from "gatsby"
 import Title from "@lekoarts/gatsby-theme-minimal-blog/src/components/title"
 import useMinimalBlogConfig from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-minimal-blog-config"
 import replaceSlashes from "@lekoarts/gatsby-theme-minimal-blog/src/utils/replaceSlashes"
-
-const TAG_COLORS = [`blue`, `green`, `purple`, `pink`, `orange`, `teal`, `indigo`, `red`]
-
-const tagColor = (name: string) => {
-  const hash = name.split(``).reduce((acc, char) => acc + char.charCodeAt(0), 0)
-  return `${TAG_COLORS[hash % TAG_COLORS.length]}.5`
-}
+import tagColor from "../../utils/tag-color"
 
 export type BlogCardPost = {
   slug: string
@@ -34,7 +28,7 @@ const BlogCards = ({ posts }: BlogCardsProps) => {
   const { basePath, blogPath, tagsPath } = useMinimalBlogConfig()
 
   return (
-    <section sx={{ mb: [5, 6, 7] }}>
+    <section sx={{ mb: [4, 5] }}>
       <Box sx={{ "> div": { pb: 1, mb: [3, 4] } }}>
         <Title text="Blog">
           <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>

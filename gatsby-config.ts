@@ -11,7 +11,7 @@ const config: GatsbyConfig = {
     siteTitle: `The Art of AI`,
     siteTitleAlt: `The Art of AI`,
     siteHeadline: `The Art of AI`,
-    siteUrl: `https://ai.mukeshkr.me/start-here`,
+    siteUrl: `https://ai.mukeshkr.me`,
     siteDescription: `The Art of AI`,
     siteImage: `/banner.jpg`,
     siteLanguage: `en`,
@@ -20,25 +20,32 @@ const config: GatsbyConfig = {
   trailingSlash: `always`,
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `state-of-ai`,
+        path: `content/state-of-ai`,
+      },
+    },
+    {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
       options: {
         navigation: [
           {
-            title: `Start Here`,
+            title: `Blog`,
             slug: `/blog`,
           },
           {
-            title: `AI Agents`,
-            slug: `/aiagents`,
+            title: `State of AI`,
+            slug: `/state-of-ai`,
           },
-         {
-            title: `AGI`,
-            slug: `/agi`,
-         },
-         {
-            title: `NLP`,
-            slug: `/nlp`,
+          {
+            title: `Speaking & Events`,
+            slug: `/speaking-events`,
+          },
+          {
+            title: `Projects`,
+            slug: `/projects`,
           },
         ],
         externalLinks: [

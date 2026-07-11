@@ -168,6 +168,33 @@ export const credentials: CredentialItem[] = [
   { title: `Solutions Lab Services Award (LSA)`, issuer: `IBM`, year: `2017` },
 ]
 
+export type EventItem = {
+  title: string
+  date: string
+  description: string
+  link: string
+  tags: string[]
+  image?: string
+}
+
+export const events: EventItem[] = [
+  {
+    title: `Developer Summit GIDS 2026`,
+    date: `GIDS 2026`,
+    description: `Represented IBM at the IBM booth, discussing how to build Agent-Ready Data and tear down data silos — governed, secure, and scalable without compromise. Featured OpenRAG (built on Docling, Langflow & OpenSearch) and watsonx.data Premium.`,
+    link: `https://www.linkedin.com/feed/update/urn:li:activity:7452923488950198272/`,
+    tags: [`IBM`, `GIDS`, `Agent-Ready Data`, `watsonx.data`],
+    image: `https://media.licdn.com/dms/image/v2/D5622AQGeZtdRLmP5pw/feedshare-shrink_800/B56Z24aakjHgAc-/0/1776915425940?e=2147483647&v=beta&t=_ua5r-TN5m8dZ1rhytn-3mKVrMHd5m2eT_5IlGzy3G4`,
+  },
+  {
+    title: `Data Science Master Class — Moringa School, Nairobi`,
+    date: `2025`,
+    description: `Led a Data Science Master Class covering my journey into data science, key learnings, real-world use cases, soft skills for success, and data science's relevance in the GenAI era.`,
+    link: `https://www.linkedin.com/posts/kr-mukesh_journey-into-data-science-activity-7381536842673745920-St1g`,
+    tags: [`Data Science`, `Masterclass`, `Moringa School`, `Mentorship`],
+  },
+]
+
 export const contact = {
   email: `mukesh.kumar43585@gmail.com`,
 }

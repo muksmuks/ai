@@ -7,6 +7,7 @@ type CarouselProps<T> = {
   renderItem: (item: T, index: number) => React.ReactNode
   basis?: Array<string | null>
   intervalMs?: number
+  manual?: boolean
   getKey?: (item: T, index: number) => string
 }
 
@@ -15,6 +16,7 @@ function Carousel<T>({
   renderItem,
   basis = [`88%`, `46%`, `31%`],
   intervalMs = 4000,
+  manual = false,
   getKey,
 }: CarouselProps<T>) {
   const trackRef = React.useRef<HTMLDivElement | null>(null)
@@ -30,7 +32,7 @@ function Carousel<T>({
   }, [items.length])
 
   React.useEffect(() => {
-    if (items.length <= 1) return undefined
+    if (manual || items.length <= 1) return undefined
     const id = setInterval(() => {
       if (pausedRef.current) return
       setActiveIndex((current) => {
@@ -56,8 +58,74 @@ function Carousel<T>({
 
   if (items.length === 0) return null
 
+  const goTo = (index: number) => {
+    const clamped = (index + items.length) % items.length
+    setActiveIndex(clamped)
+    scrollToIndex(clamped)
+  }
+
   return (
-    <Box onMouseEnter={() => (pausedRef.current = true)} onMouseLeave={() => (pausedRef.current = false)}>
+    <Box
+      onMouseEnter={() => (pausedRef.current = true)}
+      onMouseLeave={() => (pausedRef.current = false)}
+      sx={{ position: `relative` }}
+    >
+      {manual && items.length > 1 && (
+        <React.Fragment>
+          <Box
+            as="button"
+            onClick={() => goTo(activeIndex - 1)}
+            aria-label="Previous"
+            sx={{
+              display: [`none`, `flex`],
+              position: `absolute`,
+              left: `-14px`,
+              top: `50%`,
+              transform: `translateY(-50%)`,
+              zIndex: 1,
+              alignItems: `center`,
+              justifyContent: `center`,
+              width: `28px`,
+              height: `28px`,
+              borderRadius: `50%`,
+              border: `1px solid`,
+              borderColor: `divide`,
+              bg: `background`,
+              color: `text`,
+              cursor: `pointer`,
+              boxShadow: `md`,
+            }}
+          >
+            ‹
+          </Box>
+          <Box
+            as="button"
+            onClick={() => goTo(activeIndex + 1)}
+            aria-label="Next"
+            sx={{
+              display: [`none`, `flex`],
+              position: `absolute`,
+              right: `-14px`,
+              top: `50%`,
+              transform: `translateY(-50%)`,
+              zIndex: 1,
+              alignItems: `center`,
+              justifyContent: `center`,
+              width: `28px`,
+              height: `28px`,
+              borderRadius: `50%`,
+              border: `1px solid`,
+              borderColor: `divide`,
+              bg: `background`,
+              color: `text`,
+              cursor: `pointer`,
+              boxShadow: `md`,
+            }}
+          >
+            ›
+          </Box>
+        </React.Fragment>
+      )}
       <Box
         ref={trackRef}
         onScroll={handleScroll}

@@ -35,13 +35,13 @@ const BlogCards = ({ posts }: BlogCardsProps) => {
       <Title text="Blog">
         <Link to={replaceSlashes(`/${basePath}/${blogPath}`)}>Read all posts</Link>
       </Title>
-      <Grid gap={4} columns={[1, 2, 2]}>
+      <Grid gap={3} columns={[1, 2, 3]}>
         {posts.map((post) => (
           <Card
             key={post.slug}
             sx={{
               p: 0,
-              borderRadius: `8px`,
+              borderRadius: `6px`,
               overflow: `hidden`,
               border: `1px solid`,
               borderColor: `divide`,
@@ -54,28 +54,30 @@ const BlogCards = ({ posts }: BlogCardsProps) => {
                 as="img"
                 src={post.banner.publicURL}
                 alt=""
-                sx={{ width: `100%`, height: `160px`, objectFit: `cover`, display: `block` }}
+                sx={{ width: `100%`, height: `90px`, objectFit: `cover`, display: `block` }}
               />
             ) : (
               <Box
                 sx={{
                   width: `100%`,
-                  height: `160px`,
+                  height: `90px`,
                   background: (t) => `linear-gradient(135deg, ${t.colors?.primary}, ${t.colors?.muted})`,
                 }}
               />
             )}
-            <Box sx={{ p: 3, display: `flex`, flexDirection: `column`, flex: 1 }}>
+            <Box sx={{ p: 2, display: `flex`, flexDirection: `column`, flex: 1 }}>
               {post.tags && post.tags.length > 0 && (
-                <Box sx={{ fontSize: 0, color: `secondary`, mb: 2, a: { color: `secondary` } }}>
+                <Box sx={{ fontSize: `10px`, color: `secondary`, mb: 1, a: { color: `secondary` } }}>
                   <ItemTags tags={post.tags} />
                 </Box>
               )}
-              <Link to={post.slug} sx={(t) => ({ ...t.styles?.a, fontSize: [2, 3], color: `text`, fontWeight: `bold` })}>
+              <Link to={post.slug} sx={(t) => ({ ...t.styles?.a, fontSize: [1, 1], color: `text`, fontWeight: `bold`, lineHeight: `tight` })}>
                 {post.title}
               </Link>
-              <p sx={{ color: `secondary`, fontSize: [1, 1, 2], flex: 1 }}>{post.description || post.excerpt}</p>
-              <Box sx={{ display: `flex`, justifyContent: `space-between`, alignItems: `center`, fontSize: 0, color: `secondary` }}>
+              <p sx={{ color: `secondary`, fontSize: `12px`, lineHeight: `body`, flex: 1, mt: 1, mb: 1 }}>
+                {post.description || post.excerpt}
+              </p>
+              <Box sx={{ display: `flex`, justifyContent: `space-between`, alignItems: `center`, fontSize: `10px`, color: `secondary` }}>
                 <time>{post.date}</time>
                 {post.timeToRead && <span>{Math.round(post.timeToRead)} min read</span>}
               </Box>

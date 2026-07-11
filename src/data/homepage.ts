@@ -71,13 +71,14 @@ export const techStack: TechStackCategory[] = [
 ]
 
 export type HeroStat = {
-  value: string
+  value?: string
   label: string
 }
 
 export const heroStats: HeroStat[] = [
   { value: `10+`, label: `patents in Data and AI` },
   { value: `10+`, label: `AI and Data Science products shipped` },
+  { label: `Book Reviewer - Manning Publications` },
 ]
 
 export type CredentialStat = {

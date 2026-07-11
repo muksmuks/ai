@@ -30,9 +30,6 @@ export const query = graphql`
           name
           slug
         }
-        banner {
-          publicURL
-        }
       }
     }
   }

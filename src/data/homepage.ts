@@ -77,8 +77,8 @@ export type HeroStat = {
 
 export const heroStats: HeroStat[] = [
   { value: `10+`, label: `patents in Data and AI` },
-  { value: `10+`, label: `AI and Data Science products shipped` },
-  { label: `Book Reviewer - Manning Publications` },
+  { value: `15+`, label: `DS/AI products shipped` },
+  { value: `Book Reviewer`, label: `- Manning Publications` },
 ]
 
 export type CredentialStat = {

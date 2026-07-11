@@ -6,6 +6,7 @@ import useSiteMetadata from "@lekoarts/gatsby-theme-minimal-blog/src/hooks/use-s
 import { visuallyHidden } from "@lekoarts/gatsby-theme-minimal-blog/src/styles/utils"
 import Seo from "@lekoarts/gatsby-theme-minimal-blog/src/components/seo"
 import Hero from "../texts/hero.mdx"
+import HeroStats from "../../../components/homepage/hero-stats"
 import BlogCards, { BlogCardPost } from "../../../components/homepage/blog-cards"
 import Experience from "../../../components/homepage/experience"
 import Projects from "../../../components/homepage/projects"
@@ -37,6 +38,7 @@ const Homepage = ({ posts }: MBHomepageProps) => {
       >
         <Box sx={{ flex: 1 }}>
           <Hero />
+          <HeroStats />
         </Box>
         <Box
           sx={{

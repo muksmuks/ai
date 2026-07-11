@@ -70,6 +70,22 @@ export const techStack: TechStackCategory[] = [
   { category: `Infrastructure`, items: [`TODO: AWS`, `TODO: Docker`] },
 ]
 
+export type HeroStat = {
+  value: string
+  label: string
+}
+
+export const heroStats: HeroStat[] = [
+  { value: `TODO: 3`, label: `Patents` },
+  { value: `TODO: 5`, label: `Awards` },
+  { value: `TODO: 10+`, label: `AI Products shipped` },
+]
+
+export const heroStatus = {
+  label: `TODO: Active`,
+  detail: `TODO: PhD Research`,
+}
+
 export type CredentialStat = {
   label: string
   value: string

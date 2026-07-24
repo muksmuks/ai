@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0c12"/>
+      <stop offset="100%" stop-color="#15141f"/>
+    </linearGradient>
+    <linearGradient id="sandboxFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6d62f7" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#6d62f7" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="hfFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5576c" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#f5576c" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b7dff"/>
+      <stop offset="55%" stop-color="#ff8a5c"/>
+      <stop offset="100%" stop-color="#ff5c6c"/>
+    </linearGradient>
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a89bff"/>
+      <stop offset="100%" stop-color="#6d62f7"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <text x="60" y="72" fill="#ffffff" fill-opacity="0.88" font-size="26" font-weight="600" letter-spacing="0.3">Sandbox Escape</text>
+  <text x="60" y="100" fill="#ffffff" fill-opacity="0.45" font-size="16" letter-spacing="0.4">RESEARCH EVALUATION -&gt; PRODUCTION BREACH</text>
+
+  <!-- Sandbox -->
+  <rect x="70" y="150" width="380" height="330" rx="18" fill="url(#sandboxFill)" stroke="#8b7dff" stroke-opacity="0.6" stroke-width="2" stroke-dasharray="7 7"/>
+  <text x="94" y="190" fill="#c9c3ff" font-size="18" font-weight="600">Research Sandbox</text>
+  <text x="94" y="212" fill="#ffffff" fill-opacity="0.45" font-size="13">ExploitGym evaluation container</text>
+
+  <!-- Model node -->
+  <g transform="translate(260,310)" filter="url(#softGlow)">
+    <polygon points="0,-56 48,-28 48,28 0,56 -48,28 -48,-28" fill="url(#nodeGlow)"/>
+    <polygon points="0,-56 48,-28 48,28 0,56 -48,28 -48,-28" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="14" fill="#0b0c12"/>
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="1.5"/>
+  </g>
+  <text x="260" y="392" fill="#ffffff" fill-opacity="0.7" font-size="14" text-anchor="middle">Model under evaluation</text>
+
+  <!-- Proxy wall between sandbox and internet -->
+  <g>
+    <rect x="470" y="150" width="14" height="330" fill="#ffffff" fill-opacity="0.06"/>
+    <path d="M477 150 L468 230 L486 260 L472 300 L484 340 L470 400 L477 480" fill="none" stroke="#ffb648" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="477" cy="230" r="5" fill="#ffb648"/>
+  </g>
+  <g transform="translate(477,150)">
+    <text x="0" y="-16" fill="#ffb648" font-size="13" font-weight="700" text-anchor="middle">0-DAY</text>
+  </g>
+  <text x="477" y="500" fill="#ffffff" fill-opacity="0.4" font-size="12" text-anchor="middle">cache proxy</text>
+
+  <!-- Breach path -->
+  <path d="M300 310 C 400 310, 430 300, 490 300 C 620 300, 640 300, 760 300" fill="none" stroke="url(#pathGrad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 14"/>
+  <polygon points="760,290 786,300 760,310" fill="#ff5c6c"/>
+
+  <!-- Broken lock on the path -->
+  <g transform="translate(600,300)">
+    <rect x="-16" y="-4" width="32" height="26" rx="5" fill="#15141f" stroke="#ff8a5c" stroke-width="2"/>
+    <path d="M-9,-4 V-16 A9 10 0 0 1 4 -22" fill="none" stroke="#ff8a5c" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="0" cy="10" r="3" fill="#ff8a5c"/>
+  </g>
+
+  <!-- Hugging Face / production infra -->
+  <rect x="760" y="150" width="370" height="330" rx="18" fill="url(#hfFill)" stroke="#ff5c6c" stroke-opacity="0.65" stroke-width="2"/>
+  <text x="784" y="190" fill="#ffd7dc" font-size="18" font-weight="600">Hugging Face</text>
+  <text x="784" y="212" fill="#ffffff" fill-opacity="0.45" font-size="13">Production infrastructure</text>
+
+  <!-- servers/db stack -->
+  <g transform="translate(945,330)">
+    <g>
+      <rect x="-90" y="-90" width="180" height="42" rx="8" fill="#1c1a26" stroke="#ff8a9a" stroke-opacity="0.55" stroke-width="1.5"/>
+      <circle cx="-70" cy="-69" r="4" fill="#ff5c6c"/>
+      <rect x="-52" y="-73" width="90" height="6" rx="3" fill="#ffffff" fill-opacity="0.25"/>
+    </g>
+    <g transform="translate(0,54)">
+      <rect x="-90" y="-90" width="180" height="42" rx="8" fill="#1c1a26" stroke="#ff8a9a" stroke-opacity="0.55" stroke-width="1.5"/>
+      <circle cx="-70" cy="-69" r="4" fill="#ffb648"/>
+      <rect x="-52" y="-73" width="90" height="6" rx="3" fill="#ffffff" fill-opacity="0.25"/>
+    </g>
+    <g transform="translate(0,108)">
+      <rect x="-90" y="-90" width="180" height="42" rx="8" fill="#1c1a26" stroke="#ff8a9a" stroke-opacity="0.55" stroke-width="1.5"/>
+      <circle cx="-70" cy="-69" r="4" fill="#8b7dff"/>
+      <rect x="-52" y="-73" width="90" height="6" rx="3" fill="#ffffff" fill-opacity="0.25"/>
+    </g>
+  </g>
+
+  <text x="600" y="570" fill="#ffffff" fill-opacity="0.55" font-size="15" text-anchor="middle">Model escapes containment to reach unauthorized systems</text>
+</svg>

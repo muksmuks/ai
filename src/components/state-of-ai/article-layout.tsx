@@ -2,6 +2,7 @@
 import * as React from "react"
 import { jsx, Box, Heading, Link as TLink } from "theme-ui"
 import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout"
+import Utterances from "../utterances"
 
 type ArticleLayoutProps = {
   title: string
@@ -66,6 +67,8 @@ const ArticleLayout = ({ title, date, image, sourceUrl, tldr, children }: Articl
     )}
 
     <section sx={{ my: 5, variant: `layout.content` }}>{children}</section>
+
+    <Utterances />
   </Layout>
 )
 

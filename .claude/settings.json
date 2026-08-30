@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(xargs -I{} sh -c 'echo \"== {} ==\"; cat {}')",
+      "Bash(python3 -c \"import cairosvg\")",
+      "Bash(qlmanage -t -s 1200 -o /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad static/state-of-ai/openai-sandbox-escape-huggingface-cover.svg)",
+      "Bash(sips -g pixelWidth -g pixelHeight \"/private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/openai-sandbox-escape-huggingface-cover.svg.png\")",
+      "Bash(sips -c 630 1200 openai-sandbox-escape-huggingface-cover.svg.png --out cropped.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight cropped.png)",
+      "Bash(sips --cropOffset 0 0 -c 630 1200 openai-sandbox-escape-huggingface-cover.svg.png --out cropped2.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight cropped2.png)",
+      "Bash(node -e \"console.log\\(1\\)\")",
+      "Bash(python3 -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(timeout 90 brew install cairo)",
+      "Bash(brew install *)",
+      "Bash(yarn develop *)",
+      "Bash(tee /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/gatsby-dev.log)",
+      "Bash(tee /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/gatsby-dev2.log)",
+      "Bash(curl -s -o /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/article-page.html -w \"HTTP %{http_code}\\\\n\" http://localhost:8000/state-of-ai/openai-sandbox-escape-huggingface/)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx --yes playwright screenshot --wait-for-timeout=4000 --viewport-size=1280,2000 \"http://localhost:8000/state-of-ai/openai-sandbox-escape-huggingface/\" /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/article-preview.png)",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(npx --yes playwright screenshot --wait-for-timeout=5000 --viewport-size=1280,2400 --full-page \"http://localhost:8000/state-of-ai/openai-sandbox-escape-huggingface/\" /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/article-preview.png)",
+      "Bash(npx --yes playwright screenshot --wait-for-timeout=3000 --viewport-size=1280,2600 --full-page \"http://localhost:8000/state-of-ai/openai-sandbox-escape-huggingface/\" /private/tmp/claude-501/-Users-mukeshkumar-Documents-muks-others-learnings-github-muksmuks-ai/ccbb53bf-2744-48b4-ae0d-6e78ae3d2aa7/scratchpad/article-preview2.png)"
+    ]
+  }
+}

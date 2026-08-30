@@ -1,0 +1,46 @@
+---
+title: "Advancing Open-Source World Models: LingBot-World"
+slug: "world-models-lingbot"
+date: 2026-07-12
+sourceUrl: "https://arxiv.org/abs/2601.20540"
+image: "/state-of-ai/world-models-lingbot-fig1.jpg"
+tldr:
+  - "LingBot-World is an open-sourced world simulator, built on video generation, that the Robbyant team positions as matching closed-source systems like Genie 3 and Mirage 2 on generality, horizon length, and dynamic degree — while running in real time."
+  - It is a generative World Model that produce observable futures, Vs latent World Models that predict in abstract space
+  - "A three-stage pipeline turns a 14B video-generation prior into a 28B mixture-of-experts world model, then distills it into a causal, few-step model that streams at 16 fps with sub-1-second latency."
+  - "Beyond passive video, it powers promptable world events, an action agent for autonomous exploration, and 3D scene reconstruction — with code, weights, and checkpoints all released publicly."
+tags:
+  - "World Models"
+  - "Video Generation"
+  - "Open Source"
+---
+
+## Main claims
+
+- Achieves high fidelity and robust dynamics across a broad domain range — photorealistic, scientific, and stylized/cartoon scenes — rather than being tuned to one visual style.
+- Supports minute-level generation horizons (demonstrated up to 10 minutes) while preserving contextual consistency, an emergent "long-term memory" that persists objects and layouts even after they leave the camera's view for up to 60 seconds.
+- Runs in real time: under 1 second of latency at 16 fps for 480p interactive generation, on a single GPU node.
+- On VBench, it beats the interactive-world-model baselines Yume-1.5 and HY-World 1.5 on imaging quality, aesthetic quality, dynamic degree (0.8857 vs. 0.7612 and 0.7217), and overall consistency, while matching them on motion smoothness and temporal flickering.
+- Per the authors' own comparison table, it's the only model in its class that combines a general domain, long generation horizon, and high dynamic degree while also being fully open-source — rivals like Genie 3 and Mirage 2 are closed, and other open models compromise on domain or dynamics.
+- The same architecture generalizes into three downstream applications: text-steerable "promptable world events," an action agent that plans autonomous exploration, and 3D point-cloud reconstruction from generated video.
+- The authors are explicit about limitations: memory is an emergent property of the context window rather than an explicit storage module, inference still requires enterprise-grade GPUs, the controllable action space is narrow (navigation/basic movement, not object-level manipulation), and long rollouts eventually drift and lose structural fidelity.
+
+## What is it
+
+LingBot-World is an open-source "world simulator stemming from video generation" — a system that doesn't just render plausible-looking video, but learns a controllable, persistent, action-conditioned model of an environment. Architecturally, it's a 28B-parameter mixture-of-experts diffusion transformer (two 14B experts, one active per denoising step) built on top of the Wan2.2 image-to-video backbone. It takes an initial image or video, noisy latents, and user-issued actions (WASD keyboard input plus camera rotation encoded as Plücker embeddings) as input, and generates a video stream that follows those actions while staying visually and geometrically consistent over long horizons. A distilled, causal variant — LingBot-World-Fast — trades a small amount of peak quality for real-time, autoregressive streaming.
+
+## Why it matters
+
+Recent video generators produce short, visually coherent clips, but the authors argue they remain "dreamers" rather than "simulators": they hallucinate pixel transitions from statistical correlations without a grounded model of causality, object permanence, or physics. That gap matters because embodied and agentic AI — robots, game agents, autonomous driving stacks — need to rehearse actions and reason about consequences in a simulated environment before acting for real, and training data for that kind of interactive experience is scarce and expensive to collect. At the same time, the strongest existing interactive world models (Genie 3, Mirage 2) are closed-source, which the authors say limits community progress. Releasing a general-domain, long-horizon, high-dynamic, real-time model — with code and weights — is meant to close both gaps at once: the capability gap between generation and simulation, and the access gap between proprietary and open research.
+
+## How it was achieved
+
+**Data engine.** A hybrid pipeline combines real-world first/third-person footage, precisely-timestamped game recordings (RGB frames paired with keyboard/camera signals across navigation, sightseeing, long-tail, and world-interaction categories), and a synthetic Unreal Engine rendering pipeline for collision-free, diverse camera trajectories. Every clip is then profiled (quality filtering, VLM-based semantic tagging, MegaSAM-derived camera poses) and annotated with a hierarchical captioning scheme — a global narrative caption, an action-decoupled scene-static caption, and dense time-aligned event captions — so motion control can be disentangled from scene content during training.
+
+**Stage I — Pre-training.** The 14B Wan2.2 image-to-video diffusion model is adopted as-is to establish a strong general video prior: spatiotemporal coherence, high-fidelity textures, open-domain semantics — without yet encoding any interactive logic.
+
+**Stage II — Middle-training.** The pretrained generator is lifted into a bidirectional, action-conditioned world model. A progressive curriculum stretches training clips from 5 seconds to 60 seconds to teach long-term consistency and let spatial memory emerge, using a two-expert MoE (high-noise expert for global structure, low-noise expert for fine detail). Actions are injected via adaptive layer normalization on top of a frozen backbone, with only new action-adapter layers finetuned — preserving the base model's visual quality while adding controllability. Training this 28B model on minute-long sequences is made tractable with FSDP2 (sharded data parallelism) and Ulysses context-parallel attention.
+
+**Stage III — Post-training.** The bidirectional teacher is converted into a causal, streaming model via block-causal attention (bidirectional within a chunk, causal across chunks) using a diffusion-forcing objective, initialized from the high-noise expert. It's then compressed into a few-step generator through distribution matching distillation (DMD) combined with self-rollout training (to close the train/inference distribution gap) and an adversarial loss against real video (to recover fidelity the teacher itself lacks). The result, LingBot-World-Fast, streams 480p video at 16 fps with sub-1-second latency on a single GPU node.
+
+**Applications.** The same conditioning machinery is repurposed for three downstream uses: *promptable world events*, where text prompts steer global conditions (weather, art style) or inject local objects/agents into an already-generated scene; an *action agent*, a Qwen3-VL-2B model finetuned to predict future keyboard/camera actions from a single frame, which then drives the world model's rollout; and *3D reconstruction*, where off-the-shelf 3D foundation models convert generated video into point clouds, validated by the model's emergent cross-view geometric consistency.

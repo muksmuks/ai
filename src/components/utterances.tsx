@@ -2,7 +2,7 @@
 import * as React from "react"
 import { jsx, Box, useColorMode } from "theme-ui"
 
-const REPO = `muksmuks/blog`
+const REPO = `muksmuks/ai`
 const UTTERANCES_ORIGIN = `https://utteranc.es`
 
 const themeFor = (colorMode: string) => (colorMode === `dark` ? `github-dark` : `github-light`)
